@@ -1,8 +1,8 @@
 {
   "id": "206247b6-9fec-4ed2-8927-e4f388c674d4",
   "revision": 0,
-  "last_node_id": 129,
-  "last_link_id": 229,
+  "last_node_id": 130,
+  "last_link_id": 231,
   "nodes": [
     {
       "id": 50,
@@ -234,159 +234,6 @@
       "widgets_values": [],
       "color": "#223",
       "bgcolor": "#335"
-    },
-    {
-      "id": 27,
-      "type": "WanVideoSampler",
-      "pos": [
-        1434.9656982421875,
-        -536.9714965820312
-      ],
-      "size": [
-        315,
-        873.39453125
-      ],
-      "flags": {},
-      "order": 29,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "WANVIDEOMODEL",
-          "link": 108
-        },
-        {
-          "name": "image_embeds",
-          "type": "WANVIDIMAGE_EMBEDS",
-          "link": 172
-        },
-        {
-          "name": "text_embeds",
-          "shape": 7,
-          "type": "WANVIDEOTEXTEMBEDS",
-          "link": 30
-        },
-        {
-          "name": "samples",
-          "shape": 7,
-          "type": "LATENT",
-          "link": null
-        },
-        {
-          "name": "feta_args",
-          "shape": 7,
-          "type": "FETAARGS",
-          "link": null
-        },
-        {
-          "name": "context_options",
-          "shape": 7,
-          "type": "WANVIDCONTEXT",
-          "link": null
-        },
-        {
-          "name": "cache_args",
-          "shape": 7,
-          "type": "CACHEARGS",
-          "link": null
-        },
-        {
-          "name": "flowedit_args",
-          "shape": 7,
-          "type": "FLOWEDITARGS",
-          "link": null
-        },
-        {
-          "name": "slg_args",
-          "shape": 7,
-          "type": "SLGARGS",
-          "link": null
-        },
-        {
-          "name": "loop_args",
-          "shape": 7,
-          "type": "LOOPARGS",
-          "link": null
-        },
-        {
-          "name": "experimental_args",
-          "shape": 7,
-          "type": "EXPERIMENTALARGS",
-          "link": null
-        },
-        {
-          "name": "sigmas",
-          "shape": 7,
-          "type": "SIGMAS",
-          "link": null
-        },
-        {
-          "name": "unianimate_poses",
-          "shape": 7,
-          "type": "UNIANIMATE_POSE",
-          "link": null
-        },
-        {
-          "name": "fantasytalking_embeds",
-          "shape": 7,
-          "type": "FANTASYTALKING_EMBEDS",
-          "link": null
-        },
-        {
-          "name": "uni3c_embeds",
-          "shape": 7,
-          "type": "UNI3C_EMBEDS",
-          "link": null
-        },
-        {
-          "name": "multitalk_embeds",
-          "shape": 7,
-          "type": "MULTITALK_EMBEDS",
-          "link": null
-        },
-        {
-          "name": "freeinit_args",
-          "shape": 7,
-          "type": "FREEINITARGS",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "samples",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            33
-          ]
-        },
-        {
-          "name": "denoised_samples",
-          "type": "LATENT",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-WanVideoWrapper",
-        "ver": "d9b1f4d1a5aea91d101ae97a54714a5861af3f50",
-        "Node name for S&R": "WanVideoSampler"
-      },
-      "widgets_values": [
-        4,
-        1,
-        5,
-        44,
-        "fixed",
-        true,
-        "dpm++_sde",
-        0,
-        1,
-        "",
-        "comfy",
-        0,
-        -1,
-        false
-      ]
     },
     {
       "id": 35,
@@ -779,62 +626,6 @@
       "bgcolor": "#3f5159"
     },
     {
-      "id": 104,
-      "type": "WanVideoEncode",
-      "pos": [
-        193.28677368164062,
-        -85.77310180664062
-      ],
-      "size": [
-        270,
-        242
-      ],
-      "flags": {},
-      "order": 26,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "vae",
-          "type": "WANVAE",
-          "link": 175
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 228
-        },
-        {
-          "name": "mask",
-          "shape": 7,
-          "type": "MASK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "samples",
-          "type": "LATENT",
-          "links": [
-            174
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-WanVideoWrapper",
-        "ver": "06863fe2d283e89ba2386260ad2700557dda1897",
-        "Node name for S&R": "WanVideoEncode"
-      },
-      "widgets_values": [
-        false,
-        272,
-        272,
-        144,
-        128,
-        0,
-        1
-      ]
-    },
-    {
       "id": 38,
       "type": "WanVideoVAELoader",
       "pos": [
@@ -1145,6 +936,124 @@
       "bgcolor": "#335"
     },
     {
+      "id": 46,
+      "type": "WanVideoTextEmbedBridge",
+      "pos": [
+        943.1697387695312,
+        1096.8651123046875
+      ],
+      "size": [
+        315,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 22,
+      "mode": 2,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 54
+        },
+        {
+          "name": "negative",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": 55
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_embeds",
+          "type": "WANVIDEOTEXTEMBEDS",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "d9b1f4d1a5aea91d101ae97a54714a5861af3f50",
+        "Node name for S&R": "WanVideoTextEmbedBridge"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 126,
+      "type": "MarkdownNote",
+      "pos": [
+        -653.9163818359375,
+        -382.01556396484375
+      ],
+      "size": [
+        362.6117858886719,
+        143.0945281982422
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "LoRA link:\n\n[https://huggingface.co/BowenXue/Stand-In](https://huggingface.co/BowenXue/Stand-In)\n\nThis LoRA is not the traditional kind and it HAS TO connect to the model loader directly."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 121,
+      "type": "PreviewImage",
+      "pos": [
+        37.458839416503906,
+        -72.97832489013672
+      ],
+      "size": [
+        140,
+        246
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 227
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.49",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 129,
+      "type": "MarkdownNote",
+      "pos": [
+        791.3861694335938,
+        -356.8863830566406
+      ],
+      "size": [
+        362.6117858886719,
+        143.0945281982422
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Prompt Writing Tip: If you do not wish to alter the subject's facial features, simply use \"a man\" or \"a woman\" without adding extra descriptions of their appearance. Prompts support both Chinese and English input. The prompt is intended for generating frontal, medium-to-close-up videos.\n\nInput Image Recommendation: For best results, use a high-resolution frontal face image. There are no restrictions on resolution or file extension, as our built-in preprocessing pipeline will handle them automatically.\n\n[https://github.com/WeChatCV/Stand-In](https://github.com/WeChatCV/Stand-In)"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
       "id": 16,
       "type": "WanVideoTextEncode",
       "pos": [
@@ -1188,7 +1097,7 @@
         "Node name for S&R": "WanVideoTextEncode"
       },
       "widgets_values": [
-        "一位男性舒适地坐在书桌前，正对着镜头，仿佛在与屏幕前的亲友对话。他的眼神专注而温柔，嘴角带着自然的笑意。背景是他精心布置的个人空间，墙上贴着照片和一张世界地图，传达出一种亲密而现代的沟通感。",
+        "一位男性舒适地坐在书桌前，正对着镜头，仿佛在与屏幕前的亲友对话。他的眼神专注而温柔，嘴角带着自然的笑意。背景是他精心布置的个人空间，墙上贴着照片和一张世界地图，传达出一种亲密而现代的沟通感",
         "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
         true,
         false,
@@ -1196,6 +1105,200 @@
       ],
       "color": "#332922",
       "bgcolor": "#593930"
+    },
+    {
+      "id": 27,
+      "type": "WanVideoSampler",
+      "pos": [
+        1434.9656982421875,
+        -536.9714965820312
+      ],
+      "size": [
+        315,
+        873.39453125
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "WANVIDEOMODEL",
+          "link": 108
+        },
+        {
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "link": 172
+        },
+        {
+          "name": "text_embeds",
+          "shape": 7,
+          "type": "WANVIDEOTEXTEMBEDS",
+          "link": 30
+        },
+        {
+          "name": "samples",
+          "shape": 7,
+          "type": "LATENT",
+          "link": null
+        },
+        {
+          "name": "feta_args",
+          "shape": 7,
+          "type": "FETAARGS",
+          "link": null
+        },
+        {
+          "name": "context_options",
+          "shape": 7,
+          "type": "WANVIDCONTEXT",
+          "link": null
+        },
+        {
+          "name": "cache_args",
+          "shape": 7,
+          "type": "CACHEARGS",
+          "link": null
+        },
+        {
+          "name": "flowedit_args",
+          "shape": 7,
+          "type": "FLOWEDITARGS",
+          "link": null
+        },
+        {
+          "name": "slg_args",
+          "shape": 7,
+          "type": "SLGARGS",
+          "link": null
+        },
+        {
+          "name": "loop_args",
+          "shape": 7,
+          "type": "LOOPARGS",
+          "link": null
+        },
+        {
+          "name": "experimental_args",
+          "shape": 7,
+          "type": "EXPERIMENTALARGS",
+          "link": null
+        },
+        {
+          "name": "sigmas",
+          "shape": 7,
+          "type": "SIGMAS",
+          "link": null
+        },
+        {
+          "name": "unianimate_poses",
+          "shape": 7,
+          "type": "UNIANIMATE_POSE",
+          "link": null
+        },
+        {
+          "name": "fantasytalking_embeds",
+          "shape": 7,
+          "type": "FANTASYTALKING_EMBEDS",
+          "link": null
+        },
+        {
+          "name": "uni3c_embeds",
+          "shape": 7,
+          "type": "UNI3C_EMBEDS",
+          "link": null
+        },
+        {
+          "name": "multitalk_embeds",
+          "shape": 7,
+          "type": "MULTITALK_EMBEDS",
+          "link": null
+        },
+        {
+          "name": "freeinit_args",
+          "shape": 7,
+          "type": "FREEINITARGS",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            33
+          ]
+        },
+        {
+          "name": "denoised_samples",
+          "type": "LATENT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "d9b1f4d1a5aea91d101ae97a54714a5861af3f50",
+        "Node name for S&R": "WanVideoSampler"
+      },
+      "widgets_values": [
+        4,
+        1,
+        5,
+        44,
+        "fixed",
+        true,
+        "dpm++_sde",
+        0,
+        1,
+        "",
+        "comfy",
+        0,
+        -1,
+        false
+      ]
+    },
+    {
+      "id": 58,
+      "type": "LoadImage",
+      "pos": [
+        -737.1319580078125,
+        -174.04302978515625
+      ],
+      "size": [
+        413.10479736328125,
+        498.3180847167969
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            226
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.26",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "GettyImages-540680934-thumb.webp",
+        "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
     },
     {
       "id": 74,
@@ -1206,7 +1309,7 @@
       ],
       "size": [
         959.076171875,
-        691.564453125
+        334
       ],
       "flags": {},
       "order": 32,
@@ -1275,58 +1378,102 @@
       }
     },
     {
-      "id": 46,
-      "type": "WanVideoTextEmbedBridge",
+      "id": 104,
+      "type": "WanVideoEncode",
       "pos": [
-        943.1697387695312,
-        1096.8651123046875
+        185.17897033691406,
+        -134.4200897216797
       ],
       "size": [
-        315,
-        46
+        270,
+        242
       ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 22,
-      "mode": 2,
+      "flags": {},
+      "order": 26,
+      "mode": 0,
       "inputs": [
         {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 54
+          "name": "vae",
+          "type": "WANVAE",
+          "link": 175
         },
         {
-          "name": "negative",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 231
+        },
+        {
+          "name": "mask",
           "shape": 7,
-          "type": "CONDITIONING",
-          "link": 55
+          "type": "MASK",
+          "link": null
         }
       ],
       "outputs": [
         {
-          "name": "text_embeds",
-          "type": "WANVIDEOTEXTEMBEDS",
-          "links": null
+          "name": "samples",
+          "type": "LATENT",
+          "links": [
+            174
+          ]
         }
       ],
       "properties": {
         "cnr_id": "ComfyUI-WanVideoWrapper",
-        "ver": "d9b1f4d1a5aea91d101ae97a54714a5861af3f50",
-        "Node name for S&R": "WanVideoTextEmbedBridge"
+        "ver": "06863fe2d283e89ba2386260ad2700557dda1897",
+        "Node name for S&R": "WanVideoEncode"
       },
-      "widgets_values": []
+      "widgets_values": [
+        false,
+        272,
+        272,
+        144,
+        128,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 130,
+      "type": "FaceProcessorLoader",
+      "pos": [
+        -299.8837890625,
+        128.56805419921875
+      ],
+      "size": [
+        319.3335876464844,
+        58
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "face_processor",
+          "type": "FACE_PROCESSOR",
+          "links": [
+            230
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FaceProcessorLoader"
+      },
+      "widgets_values": [
+        "model.pt"
+      ]
     },
     {
       "id": 128,
       "type": "ApplyFaceProcessor",
       "pos": [
-        -297.2541198730469,
-        -77.13932037353516
+        -258.21417236328125,
+        -111.67808532714844
       ],
       "size": [
         270,
-        126
+        174
       ],
       "flags": {},
       "order": 21,
@@ -1335,7 +1482,7 @@
         {
           "name": "face_processor",
           "type": "FACE_PROCESSOR",
-          "link": 223
+          "link": 230
         },
         {
           "name": "image",
@@ -1349,8 +1496,8 @@
           "type": "IMAGE",
           "links": [
             227,
-            228,
-            229
+            229,
+            231
           ]
         }
       ],
@@ -1360,155 +1507,10 @@
       "widgets_values": [
         512,
         10,
-        1.5
+        1.5,
+        0.5,
+        false
       ]
-    },
-    {
-      "id": 127,
-      "type": "FaceProcessorLoader",
-      "pos": [
-        -294.2811279296875,
-        107.27786254882812
-      ],
-      "size": [
-        270,
-        58
-      ],
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "face_processor",
-          "type": "FACE_PROCESSOR",
-          "links": [
-            223
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "FaceProcessorLoader"
-      },
-      "widgets_values": [
-        "models/insightface"
-      ]
-    },
-    {
-      "id": 126,
-      "type": "MarkdownNote",
-      "pos": [
-        -653.9163818359375,
-        -382.01556396484375
-      ],
-      "size": [
-        362.6117858886719,
-        143.0945281982422
-      ],
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "LoRA link:\n\n[https://huggingface.co/BowenXue/Stand-In](https://huggingface.co/BowenXue/Stand-In)\n\nThis LoRA is not the traditional kind and it HAS TO connect to the model loader directly."
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 121,
-      "type": "PreviewImage",
-      "pos": [
-        37.458839416503906,
-        -72.97832489013672
-      ],
-      "size": [
-        140,
-        246
-      ],
-      "flags": {},
-      "order": 25,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 227
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.49",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 58,
-      "type": "LoadImage",
-      "pos": [
-        -737.1319580078125,
-        -174.04302978515625
-      ],
-      "size": [
-        413.10479736328125,
-        498.3180847167969
-      ],
-      "flags": {},
-      "order": 15,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            226
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.26",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "clipspace/clipspace-mask-379138.7999999998.png [input]",
-        "image"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
-      "id": 129,
-      "type": "MarkdownNote",
-      "pos": [
-        791.3861694335938,
-        -356.8863830566406
-      ],
-      "size": [
-        362.6117858886719,
-        143.0945281982422
-      ],
-      "flags": {},
-      "order": 16,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "Prompt Writing Tip: If you do not wish to alter the subject's facial features, simply use \"a man\" or \"a woman\" without adding extra descriptions of their appearance. Prompts support both Chinese and English input. The prompt is intended for generating frontal, medium-to-close-up videos.\n\nInput Image Recommendation: For best results, use a high-resolution frontal face image. There are no restrictions on resolution or file extension, as our built-in preprocessing pipeline will handle them automatically.\n\n[https://github.com/WeChatCV/Stand-In](https://github.com/WeChatCV/Stand-In)"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
     }
   ],
   "links": [
@@ -1705,14 +1707,6 @@
       "INT"
     ],
     [
-      223,
-      127,
-      0,
-      128,
-      0,
-      "FACE_PROCESSOR"
-    ],
-    [
       226,
       58,
       0,
@@ -1729,18 +1723,26 @@
       "IMAGE"
     ],
     [
-      228,
-      128,
-      0,
-      104,
-      1,
-      "IMAGE"
-    ],
-    [
       229,
       128,
       0,
       122,
+      1,
+      "IMAGE"
+    ],
+    [
+      230,
+      130,
+      0,
+      128,
+      0,
+      "FACE_PROCESSOR"
+    ],
+    [
+      231,
+      128,
+      0,
+      104,
       1,
       "IMAGE"
     ]
@@ -1763,10 +1765,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6727499949326107,
+      "scale": 0.7400249944258753,
       "offset": [
-        1220.5620388990717,
-        479.6860694347906
+        1050.1092033816878,
+        678.2426041646066
       ]
     },
     "frontendVersion": "1.24.4",

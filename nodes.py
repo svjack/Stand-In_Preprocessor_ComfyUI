@@ -5,16 +5,13 @@ import torch
 import numpy as np
 import PIL.Image
 import PIL.ImageOps
-# The ultralytics library is required for YOLOv8. Install with: pip install ultralytics
 from ultralytics import YOLO
 from facexlib.parsing import init_parsing_model
 from torchvision.transforms.functional import normalize
 from typing import Union, Optional
 import folder_paths
 
-# This code now requires the 'ultralytics' package.
-# Please install it via pip:
-# pip install ultralytics
+
 
 LOADED_PROCESSORS = {}
 
@@ -32,7 +29,6 @@ def set_extra_config_model_path(extra_config_models_dir_key, models_dir_name: st
     else:
         folder_paths.add_model_folder_path(extra_config_models_dir_key, models_dir_default, is_default=True)
 
-# Set up paths for YOLO and face parsing models
 set_extra_config_model_path("yolo", "yolo")
 set_extra_config_model_path("face_parsing", "face_parsing")
 
@@ -41,12 +37,10 @@ def download_yolo_model(model_name="model.pt"):
     """
     Checks if a YOLO model exists and downloads it from a public source if not.
     """
-    # Publicly accessible model URL
     model_url = f"https://huggingface.co/arnabdhar/YOLOv8-Face-Detection/resolve/main/{model_name}"
     yolo_dir = os.path.join(folder_paths.get_folder_paths("yolo")[0])
     model_path = os.path.join(yolo_dir, model_name)
 
-    # Ensure the target directory exists
     os.makedirs(yolo_dir, exist_ok=True)
 
     if not os.path.exists(model_path):
@@ -64,7 +58,6 @@ def download_yolo_model(model_name="model.pt"):
                     for chunk in r.iter_content(chunk_size=8192):
                         f.write(chunk)
                         downloaded += len(chunk)
-                        # Simple progress bar
                         done = int(50 * downloaded / total_size) if total_size > 0 else 0
                         progress_mb = downloaded / (1024*1024)
                         total_mb = total_size / (1024*1024)
@@ -72,16 +65,11 @@ def download_yolo_model(model_name="model.pt"):
             print(f"\nModel successfully downloaded to: {model_path}")
         except Exception as e:
             print(f"\nFailed to download model: {e}")
-            print("Please check your internet connection or try downloading the model manually from:")
-            print(model_url)
-            print(f"And place it in the '{yolo_dir}' directory.")
-            # Clean up incomplete file if download failed
             if os.path.exists(model_path):
                 os.remove(model_path)
             raise e
     return model_path
 
-# --- Utility Functions ---
 
 def _img2tensor(img: np.ndarray, bgr2rgb: bool = True) -> torch.Tensor:
     if bgr2rgb:
@@ -141,7 +129,6 @@ class FaceProcessorLoader:
             if not yolo_model_name.endswith(('.pt', '.onnx')):
                 raise ValueError(f"Invalid model name: '{yolo_model_name}'. Model filename must end with '.pt' or '.onnx'.")
             
-            # Call the download function to ensure the model file exists
             model_path = download_yolo_model(yolo_model_name)
             
             print(f"Loading YOLO model from local path: {model_path}")
@@ -176,14 +163,16 @@ class ApplyFaceProcessor:
                 "border_thresh": ("INT", {"default": 10, "min": 0, "max": 100, "step": 1}),
                 "face_crop_scale": ("FLOAT", {"default": 1.5, "min": 1.0, "max": 3.0, "step": 0.1}),
                 "confidence_threshold": ("FLOAT", {"default": 0.5, "min": 0.1, "max": 1.0, "step": 0.05}),
+                # --- NEW INPUT ---
+                "with_neck": ("BOOLEAN", {"default": False, "label_on": "enabled", "label_off": "disabled"}),
             }
         }
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "apply_processing"
-    CATEGORY = "FaceUtils"
+    CATEGORY = "Stand-In"
 
-    def apply_processing(self, face_processor, image, resize_to, border_thresh, face_crop_scale, confidence_threshold):
+    def apply_processing(self, face_processor, image, resize_to, border_thresh, face_crop_scale, confidence_threshold, with_neck):
         detection_model, parsing_model, device = face_processor
         
         frame = tensor_to_cv2_img(image)
@@ -228,12 +217,18 @@ class ApplyFaceProcessor:
         with torch.no_grad():
             normalized_face = normalize(face_tensor, [0.5, 0.5, 0.5], [0.5, 0.5, 0.5])
             parsing_out = parsing_model(normalized_face)[0]
-            parsing_mask = parsing_out.argmax(dim=1, keepdim=True)
+            parsing_map_tensor = parsing_out.argmax(dim=1, keepdim=True)
 
-        mask = (parsing_mask.squeeze().cpu().numpy() != 0).astype(np.uint8)
+        parsing_map_np = parsing_map_tensor.squeeze().cpu().numpy().astype(np.uint8)
+        
+        if with_neck:
+            final_mask_np = (parsing_map_np != 0).astype(np.uint8)
+        else:
+            parts_to_remove = [0, 14, 16]
+            final_mask_np = np.isin(parsing_map_np, parts_to_remove, invert=True).astype(np.uint8)
         
         white_background = np.ones_like(image_resized, dtype=np.uint8) * 255
-        mask_3channel = cv2.cvtColor(mask * 255, cv2.COLOR_GRAY2BGR)
+        mask_3channel = cv2.cvtColor(final_mask_np * 255, cv2.COLOR_GRAY2BGR)
         
         result_img_bgr = np.where(mask_3channel != 0, image_resized, white_background)
 
